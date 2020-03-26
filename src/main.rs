@@ -1,24 +1,16 @@
 #[macro_use(event_enum)]
 extern crate wayland_client;
 
-use std::cmp::min;
-use std::io::Write;
-use std::os::unix::io::AsRawFd;
-
 use pathfinder_canvas::{CanvasFontContext, CanvasRenderingContext2D, Path2D};
 use pathfinder_color::ColorF;
 use pathfinder_geometry::rect::RectF;
 use pathfinder_geometry::vector::{Vector2F, Vector2I};
 use pathfinder_gl::{GLDevice, GLVersion};
-use pathfinder_renderer::concurrent::rayon::RayonExecutor;
-use pathfinder_renderer::concurrent::scene_proxy::SceneProxy;
 use pathfinder_renderer::gpu::options::{DestFramebuffer, RendererOptions};
 use pathfinder_renderer::gpu::renderer::Renderer;
-use pathfinder_renderer::options::BuildOptions;
 use pathfinder_resources::embedded::EmbeddedResourceLoader;
-use pathfinder_resources::fs::FilesystemResourceLoader;
 use khronos_egl::{self as egl, Context as EGLContext, Display as EGLDisplay};
-use wayland_client::protocol::{wl_compositor, wl_keyboard, wl_pointer, wl_seat, wl_shell, wl_shm};
+use wayland_client::protocol::{wl_compositor, wl_keyboard, wl_pointer, wl_seat, wl_shell};
 use wayland_client::{Display, Filter, GlobalManager};
 use wayland_egl::WlEglSurface;
 
