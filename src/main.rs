@@ -36,9 +36,7 @@ fn create_context(display: EGLDisplay) -> EGLContext {
     let context_attributes = [
         egl::CONTEXT_MAJOR_VERSION, 3,
         egl::CONTEXT_MINOR_VERSION, 2,
-        // FIXME: If I uncomment this line context creation fails.
-        // error: 'unable to create a context: BadAttribute'
-        // egl::CONTEXT_OPENGL_PROFILE_MASK, egl::CONTEXT_OPENGL_CORE_PROFILE_BIT,
+        egl::CONTEXT_OPENGL_PROFILE_MASK, egl::CONTEXT_OPENGL_CORE_PROFILE_BIT,
         egl::NONE,
     ];
 
