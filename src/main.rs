@@ -106,14 +106,16 @@ fn main() {
     });
 
     // Initialize OpenGL
-    let egl_display = egl::get_display(display.get_display_ptr() as *mut std::ffi::c_void).unwrap();
+    egl::bind_api(egl::OPENGL_API);
+    let native_display = unsafe { egl::NativeDisplayType::from_ptr(display.get_display_ptr() as *mut std::ffi::c_void) };
+    let egl_display = egl::get_display(native_display).unwrap();
     let egl_version = egl::initialize(egl_display).unwrap();
     let egl_context = create_context(egl_display);
     let egl_surface = WlEglSurface::new(&surface, buf_x as i32, buf_y as i32);
     let egl_pointer = egl_surface.ptr();
     egl::make_current(
         egl_display,
-        Some(egl_pointer as *mut std::ffi::c_void),
+        Some(unsafe { egl::Surface::from_ptr(egl_pointer as *mut _) }),
         None,
         Some(egl_context),
     );
