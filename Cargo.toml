@@ -1,0 +1,18 @@
+[package]
+name = "bean"
+version = "0.1.0"
+authors = ["Pyfisch <pyfisch@posteo.org>"]
+edition = "2018"
+
+[dependencies]
+gl = "0.14.0"
+pathfinder_canvas = { git = "https://github.com/servo/pathfinder/" }
+pathfinder_color = { git = "https://github.com/servo/pathfinder/" }
+pathfinder_resources = { git = "https://github.com/servo/pathfinder/" }
+pathfinder_gl = { git = "https://github.com/servo/pathfinder/" }
+pathfinder_geometry = { git = "https://github.com/servo/pathfinder/" }
+pathfinder_renderer = { git = "https://github.com/servo/pathfinder/" }
+wayland-client = { version = "0.25", features = ["use_system_lib"] }
+wayland-protocols = { version = "0.25", features = ["client"] }
+wayland-egl = { version = "0.25" }
+khronos-egl = { git = "https://github.com/timothee-haudebourg/khronos-egl.git", branch = "v2" }
